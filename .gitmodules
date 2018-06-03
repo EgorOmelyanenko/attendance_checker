@@ -1,0 +1,3 @@
+[submodule "nstu_api/NSTUTRPOAPI"]
+	path = nstu_api/NSTUTRPOAPI
+	url = https://github.com/dimones/NSTUTRPOAPI.git
