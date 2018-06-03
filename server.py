@@ -6,7 +6,7 @@ import signal
 from aiohttp.web import Application as Server
 from aiohttp.web import run_app
 
-from api import lecturer_api
+from api import student_api
 
 
 def start_server(host, port):
@@ -33,11 +33,14 @@ def run_server(host, port, handle_signals=False):
 
 def init_handlers(server):
 
-    # component
+    server.router.add_get(
+        "/student/auth",
+        student_api.auth
+    )
 
     server.router.add_get(
-        "/lecturer/get_lessons",
-        lecturer_api.get_lessons
+        "/student/students__info",
+        student_api.get_info
     )
 
 
