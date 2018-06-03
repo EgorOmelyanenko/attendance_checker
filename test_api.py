@@ -3,7 +3,7 @@ import requests
 
 
 def send_request(suffix, data={}):
-    return requests.get(
+    return requests.post(
         "http://127.0.0.1:8080/{}".format(suffix),
         data=json.dumps(data),
         headers={
