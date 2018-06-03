@@ -49,6 +49,11 @@ def init_handlers(server):
     )
 
     server.router.add_post(
+        "/student/send_qr",
+        student_api.send_qr
+    )
+
+    server.router.add_post(
         "/lector/auth",
         lector_api.auth
     )
@@ -56,6 +61,11 @@ def init_handlers(server):
     server.router.add_post(
         "/lector/generate__qr",
         lector_api.generate_qr
+    )
+
+    server.router.add_post(
+        "/lector/get__list",
+        lector_api.get_students_list
     )
 
     server.router.add_static(

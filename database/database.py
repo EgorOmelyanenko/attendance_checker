@@ -123,4 +123,6 @@ CREATE TABLE attendance (student_id integer REFERENCES student, date timestamp);
 create table users(username char(32), password char(32), state char(16));
 insert into users values('romanov', '12345678', '');
 ALTER TABLE users ADD COLUMN id integer DEFAULT 91;
+
+create table pairs (lector_id integer, pair_id integer, student_id integer);
 '''

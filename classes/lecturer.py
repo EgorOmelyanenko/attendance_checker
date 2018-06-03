@@ -27,3 +27,6 @@ class Lecturer:
 
     def get_id(self):
         return self.i_id
+
+    def get_current_pair(self):
+        return 1
