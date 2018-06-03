@@ -44,15 +44,33 @@ def init_handlers(server):
     )
 
     server.router.add_post(
+        "/student/current__pair",
+        student_api.get_current_pair
+    )
+
+    server.router.add_post(
         "/lector/auth",
         lector_api.auth
     )
 
+    server.router.add_post(
+        "/lector/generate__qr",
+        lector_api.generate_qr
+    )
+
+    server.router.add_static(
+        "/static/",
+        "./static"
+    )
+
+server_settings = {
+    "host": "127.0.0.1",
+    "port": 8080,
+}
 
 def main():
     start_server(
-        host="127.0.0.1",
-        port=8080,
+        **server_settings
 )
 
 

@@ -21,3 +21,14 @@ async def get_info(request):
     )
 
     return get_response(result, True)
+
+async def get_current_pair(request):
+    req_data = await get_request(request)
+
+    result = NSTUAPI().get_current_pair(
+        req_data["token"],
+        date=req_data["date"] if "date" in req_data else None
+    )
+
+    return get_response(result, True)
+
