@@ -36,7 +36,7 @@ async def generate_qr(request):
 
 async def get_students_list(request):
     result = []
-    students = Postgres.select(table="pairs", where=("pair_id='{}'".format(1)))
+    students = Postgres.select(table="pairs", where=("pair_id='{}'".format(1)), group_by="lector_id,pair_id,student_id")
     if students:
         for student in students:
             group_id = Postgres.select(table="group_students", where="student_id='{}'".format(student["student_id"]))[0]["group_id"]

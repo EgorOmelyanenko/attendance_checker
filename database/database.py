@@ -6,7 +6,7 @@ from psycopg2.extras import RealDictCursor
 class Database:
 
     @classmethod
-    def select(cls, table, columns="*", where=None, limit=None):
+    def select(cls, table, columns="*", where=None, limit=None, group_by=None):
         command = "SELECT {} FROM {}".format(
             columns if not isinstance(columns, list) else ','.join(columns),
             table,
@@ -16,6 +16,9 @@ class Database:
             command += " WHERE {}".format(where)
         if limit:
             command += " LIMIT {}".format(limit)
+
+        if group_by:
+            command += " GROUP BY {}".format(group_by)
 
         command += ";"
         return cls._execute(command)
