@@ -37,14 +37,15 @@ async def generate_qr(request):
 async def get_students_list(request):
     result = {}
     students = Postgres.select(table="pairs", where=("pair_id='{}'".format(1)))
-    for student in students:
-        group_id = Postgres.select(table="group_students", where="student_id='{}'".format(student["student_id"]))[0]["group_id"]
-        result.update(
-            {
-                "student": Postgres.select(table="student", where="student_id='{}'".format(student["student_id"]))[0]["student_info"],
-                "group": Postgres.select(table="groups", where="group_id='{}'".format(group_id))[0]["group_info"]
-            }
-        )
+    if students:
+        for student in students:
+            group_id = Postgres.select(table="group_students", where="student_id='{}'".format(student["student_id"]))[0]["group_id"]
+            result.update(
+                {
+                    "student": Postgres.select(table="student", where="student_id='{}'".format(student["student_id"]))[0]["student_info"],
+                    "group": Postgres.select(table="groups", where="group_id='{}'".format(group_id))[0]["group_info"]
+                }
+            )
 
     print(result)
     return get_response(
