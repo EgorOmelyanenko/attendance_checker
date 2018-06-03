@@ -13,17 +13,17 @@ def send_request(suffix, data={}):
         }
     ).json()
 
-r = send_request(
-    "student/auth",
-    data={
-        "username": "d.bogomolov@corp.nstu.ru",
-        "password": "jmXQF97J"
-    })["data"] ## get token
-
-
 print(send_request(
-    "student/students__info",
+    "lector/auth",
     data={
-        "token": r
-    })
-)
+        "username": "romanov",
+        "password": "12345678"
+    })) ## get token
+
+
+# print(send_request(
+#     "student/students__info",
+#     data={
+#         "token": r
+#     })
+# )

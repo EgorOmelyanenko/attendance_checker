@@ -105,18 +105,22 @@ class Postgres(Database):
                     return cur.fetchall()
 
 
-print(Postgres.select("lector"))
+# print(Postgres.select("lector"))
 
 # schema
 '''
 CREATE TABLE predmet (predmet_id serial PRIMARY KEY, predmet_info char(64));
 CREATE TABLE student (student_id serial PRIMARY KEY, student_info char(64));
 CREATE TABLE lector (lector_id serial PRIMARY KEY, lector_info char(64), person_id integer DEFAULT 0);
-CREATE TABLE group (group_id serial PRIMARY KEY, group_info char(64));
+CREATE TABLE groups (group_id serial PRIMARY KEY, group_info char(64));
 
 CREATE TABLE group_students (group_id integer REFERENCES groups, student_id integer REFERENCES student);
 
 CREATE TABLE predmets_schedule (predmet_id integer REFERENCES predmet, date timestamp, id_group integer REFERENCES groups, lector_id integer REFERENCES lector);
 
 CREATE TABLE attendance (student_id integer REFERENCES student, date timestamp);
+
+create table users(username char(32), password char(32), state char(16));
+insert into users values('romanov', '12345678', '');
+ALTER TABLE users ADD COLUMN id integer DEFAULT 91;
 '''

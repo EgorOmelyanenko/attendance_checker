@@ -6,7 +6,7 @@ import signal
 from aiohttp.web import Application as Server
 from aiohttp.web import run_app
 
-from api import student_api
+from api import student_api, lector_api
 
 
 def start_server(host, port):
@@ -41,6 +41,11 @@ def init_handlers(server):
     server.router.add_post(
         "/student/students__info",
         student_api.get_info
+    )
+
+    server.router.add_post(
+        "/lector/auth",
+        lector_api.auth
     )
 
 
