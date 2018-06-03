@@ -33,12 +33,12 @@ def run_server(host, port, handle_signals=False):
 
 def init_handlers(server):
 
-    server.router.add_get(
+    server.router.add_post(
         "/student/auth",
         student_api.auth
     )
 
-    server.router.add_get(
+    server.router.add_post(
         "/student/students__info",
         student_api.get_info
     )
